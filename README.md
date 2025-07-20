@@ -28,6 +28,9 @@ Fetches live weather data
 
 Generates a temperature trend line chart
 
+#output:
+[weather_report.pdf](https://github.com/user-attachments/files/21333213/weather_report.pdf)
+
 Embeds chart and summary in a PDF
 
 Auto-saves as weather_report.pdf
