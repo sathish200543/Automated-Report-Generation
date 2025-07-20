@@ -1,0 +1,21 @@
+from fpdf import FPDF
+ from datetime import datetime
+  class PDF(FPDF):
+     def header(self):
+        self.set_font("Arial", "B", 14)
+        self.cell(0, 10, "Weather Forecast Report", ln=True, align="C")
+        self.ln(10)
+
+     def footer(self):
+        self.set_y(-15)
+        self.set_font("Arial", "I", 10)
+        self.cell(0, 10, f"Page {self.page_no()}", align="C")
+pdf = PDF()
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+pdf.multi_cell(0, 10, "This report shows the 5-day weather forecast for Chennai using data fetched from the OpenWeatherMap API. "
+                     "The data was visualized as a line chart showing temperature variations over time.\n\n")
+pdf.image("forecast_dashboard.png", x=25, w=160)  
+pdf.output(r"C:\Users\karthi D\Desktop\weather_report.pdf")
+print("PDF report generated successfully.")
